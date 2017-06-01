@@ -1,0 +1,13 @@
+MANIFEST.in
+setup.py
+guidebox/__init__.py
+guidebox/api_requestor.py
+guidebox/compat.py
+guidebox/error.py
+guidebox/resource.py
+guidebox/version.py
+guidebox.egg-info/PKG-INFO
+guidebox.egg-info/SOURCES.txt
+guidebox.egg-info/dependency_links.txt
+guidebox.egg-info/requires.txt
+guidebox.egg-info/top_level.txt
