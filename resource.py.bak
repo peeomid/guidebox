@@ -1,4 +1,4 @@
-
+from __future__ import unicode_literals
 
 import json
 
@@ -52,7 +52,7 @@ class GuideboxObject(dict):
     @classmethod
     def construct_from(cls, values):
         instance = cls(values.get('id'))
-        for k, v in list(values.items()):
+        for k, v in values.items():
             instance[k] = guidebox_format(v)
         return instance
 
@@ -93,7 +93,7 @@ class APIResource(GuideboxObject):
 class ListableAPIResource(APIResource):
     @classmethod
     def list(cls, **params):
-        for key, value in list(params.items()):
+        for key, value in params.items():
             if isinstance(params[key], dict):
                 for subKey in value:
                     params[str(key) + '[' + subKey + ']'] = value[subKey]
@@ -108,7 +108,7 @@ class ListableAPIResource(APIResource):
 class ImageableAPIResource(APIResource):
     @classmethod
     def images(cls, id, **params):
-        for key, value in list(params.items()):
+        for key, value in params.items():
             if isinstance(params[key], dict):
                 for subKey in value:
                     params[str(key) + '[' + subKey + ']'] = value[subKey]
@@ -160,7 +160,7 @@ class Quota(APIResource):
     def retrieve(cls, **params):
         requestor = api_requestor.APIRequestor()
         response = requestor.request('get', cls.endpoint, params)
-        print(response)
+        print response
 
 class Region(ListableAPIResource):
     endpoint = '/regions'
