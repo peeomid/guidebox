@@ -1,4 +1,4 @@
-
+from __future__ import unicode_literals
 
 import requests
 
@@ -8,13 +8,22 @@ from guidebox.version import VERSION
 
 class APIRequestor(object):
     def __init__(self, key=None):
-        self.api_key = key or guidebox.api_key
+        self.api_key = key or guidebox.api_key        
+
+    def get_quota(self, resp):
+        headers = resp.headers
+        guidebox.quota["rate-limit"] = headers["X-RateLimit-Limit"]
+        guidebox.quota["rate-remaining"] = headers["X-RateLimit-Remaining"]
+        guidebox.quota["quota"] = headers["Guidebox-Quota"]
+        guidebox.quota["quota-max"] = headers["Guidebox-Quota-Max"]
+
 
     def parse_response(self, resp):
         if resp.status_code == 504:
             raise error.APIConnectionError(resp.content or resp.reason, # pragma: no cover
                 resp.content, resp.status_code, resp)
 
+        self.get_quota(resp)
         payload = resp.json()
 
         if resp.status_code == 200:

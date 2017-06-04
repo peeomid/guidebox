@@ -7,7 +7,7 @@ except ImportError:
 
 setup (
         name = 'guidebox',
-        version = '1.0.2',
+        version = '1.0.3',
         author = 'Brian Seitel',
         author_email = 'brian@guidebox.com',
         packages = ['guidebox'],
@@ -23,6 +23,8 @@ setup (
             "Programming Language :: Python",
             "Programming Language :: Python :: 2.6",
             "Programming Language :: Python :: 2.7",
+            "Programming Language :: Python :: 3.5",
+            "Programming Language :: Python :: 3.6",
             "Programming Language :: Python :: Implementation :: CPython",
             "Programming Language :: Python :: Implementation :: PyPy"
         ]
